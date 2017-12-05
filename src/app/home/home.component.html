@@ -1,0 +1,65 @@
+
+
+<div class="row">
+<p>
+ Welcome {{username}}
+</p>
+
+<div style="padding:10px;"><p>Message : {{message}}</p></div>
+<div style="margin:20px;"><button (click)="newMessage()">New Message</button></div>
+
+<div class="row">
+	<ul *ngFor="let user of userData">
+		<li>{{user.name}}</li>
+		<li>{{user.age}}</li>
+		<li>{{user.qualification}}</li>
+		<li>{{user.designation}}</li>
+		<li>{{user.phone}}</li>
+
+	</ul>
+</div>
+
+<div class="row" style="margin:25px;">
+	<div class="container">
+    <h1 class="brand"><span>Acme</span> Web Design</h1>
+    <div class="wrapper animated bounceInLeft">
+      <div class="company-info">
+        <h3>Acme Web Design</h3>
+        <ul>
+          <li><i class="fa fa-road"></i> 44 Something st</li>
+          <li><i class="fa fa-phone"></i> (555) 555-5555</li>
+          <li><i class="fa fa-envelope"></i> test@acme.test</li>
+        </ul>
+      </div>
+      <div class="contact">
+        <h3>Email Us</h3>
+       
+        <form novalidate [formGroup]="dataform" (submit)="submitForm()">
+          <p>
+            <label>Name</label>
+            <input class="form-control" type="text" formControlName="name" required>
+          </p>
+          <p>
+            <label>Company</label>
+            <input class="form-control" type="text" formControlName="company" required>
+          </p>
+          <p>
+            <label>Email Address</label>
+            <input class="form-control" type="email" formControlName="email" required>
+          </p>
+          <p>
+            <label>Phone Number</label>
+            <input class="form-control" type="text" formControlName="phone" required>
+          </p>
+          <p class="full">
+            <label>Message</label>
+            <textarea class="form-control" formControlName="messageit" rows="5"></textarea>
+          </p>
+          <p class="full">
+            <button style="cursor:pointer" type="submit">Submit</button>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

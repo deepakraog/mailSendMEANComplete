@@ -1,0 +1,144 @@
+<div class="ui raised segment" style="padding:30px;">  
+  <h3 class="ui header">User Registration</h3>  
+  <!-- <form #f="ngForm"  
+        (ngSubmit)="onSubmit(f.value)"  
+        class="ui form">
+ 
+    <div class="field">  
+      <label for="userName">User Name</label>  
+      <input type="text"  
+             id="userName"  
+             placeholder="User Name"  
+             name="username" ngModel>  
+    </div>
+    <div class="field">  
+      <label for="qual">Qualification</label>  
+      <input type="text"  
+             id="qual"  
+             placeholder="Qualification"  
+             name="qualification" ngModel>  
+    </div>
+
+    <div class="field">  
+      <label for="desg">Designation</label>  
+      <input type="text"  
+             id="desg"  
+             placeholder="Designation"  
+             name="designation" ngModel>  
+    </div>
+
+    <div class="field">  
+      <label for="grade">Grade</label>  
+      <input type="text"  
+             id="grade"  
+             placeholder="Grade"  
+             name="grade" ngModel>  
+    </div>
+
+ 
+    <button type="submit" class="ui button">Submit</button>  
+  </form>   -->
+</div>
+<div style="margin-top:50px;padding:30px;">
+  <form novalidate
+      [formGroup]="myform"
+      (submit)="onSubmit(myform)">
+
+
+    <div class="form-group"
+         [ngClass]="{
+        'has-danger': firstName.invalid && (firstName.dirty || firstName.touched),
+        'has-success': firstName.valid && (firstName.dirty || firstName.touched)
+      }">
+      <label>First Name</label>
+      <input type="text"
+             class="form-control"
+             formControlName="firstName"
+             required>
+      <div class="form-control-feedback" *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
+        <p *ngIf="firstName.errors.required">Last Name is required</p>
+      </div>
+
+      
+       
+      
+    </div>
+
+    <div class="form-group"
+         [ngClass]="{
+        'has-danger': lastName.invalid && (lastName.dirty || lastName.touched),
+        'has-success': lastName.valid && (lastName.dirty || lastName.touched)
+      }">
+      <label>Last Name</label>
+      <input type="text"
+             class="form-control"
+             formControlName="lastName"
+             required>
+      <div class="form-control-feedback"
+           *ngIf="lastName.errors && (lastName.dirty || lastName.touched)">
+        <p *ngIf="lastName.errors.required">Last Name is required</p>
+      </div>
+    </div>
+
+
+
+  <div class="form-group"
+       [ngClass]="{
+        'has-danger': email.invalid && (email.dirty || email.touched),
+        'has-success': email.valid && (email.dirty || email.touched)
+   }">
+    <label>Email</label>
+    <input type="email"
+           class="form-control"
+           formControlName="email"
+           required>
+    <div class="form-control-feedback"
+         *ngIf="email.errors && (email.dirty || email.touched)">
+      <p *ngIf="email.errors.required">Email is required</p>
+     
+    </div>
+  </div>
+
+  <div class="form-group"
+       [ngClass]="{
+        'has-danger': password.invalid && (password.dirty || password.touched),
+        'has-success': password.valid && (password.dirty || password.touched)
+   }">
+    <label>Password</label>
+    <input type="password"
+           class="form-control"
+           formControlName="password"
+           required>
+    <div class="form-control-feedback"
+         *ngIf="password.errors && (password.dirty || password.touched)">
+      <p *ngIf="password.errors.required">Password is required</p>
+      <p *ngIf="password.errors.minlength">Password must be 8 characters long, we need another {{password.errors.minlength.requiredLength - password.errors.minlength.actualLength}} characters </p>
+    </div>
+  </div>
+
+  
+  
+  
+
+  <div class="form-group"
+       [ngClass]="{
+        'has-danger': language.invalid && (language.dirty || language.touched),
+        'has-success': language.valid && (language.dirty || language.touched)
+      }">
+    <label>Language</label>
+    <select class="form-control"
+            formControlName="language">
+      <option value="">Please select a language</option>
+      <option *ngFor="let lang of langs"
+              [value]="lang">{{lang}}
+      </option>
+    </select>
+  </div>
+
+  <button type="submit"
+          class="btn btn-primary">Submit
+  </button>
+
+  <pre>{{myform.value | json}}</pre>
+</form>
+</div>
